@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task/bloc/todo_bloc.dart';
-import 'package:task/model/todo_model.dart';
 import 'package:task/pages/detail_page.dart';
+import 'package:task/widget/loading_widget.dart';
+import 'package:task/widget/todo_card_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -80,52 +81,6 @@ class _TodoListContent extends StatelessWidget {
       },
       separatorBuilder: (_, index) => const SizedBox(height: 15),
       itemCount: state.result.length,
-    );
-  }
-}
-
-class LoadingWidget extends StatelessWidget {
-  const LoadingWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: SizedBox(
-        height: 20,
-        width: 20,
-        child: CircularProgressIndicator(
-          color: Colors.black,
-        ),
-      ),
-    );
-  }
-}
-
-class TodoCardWidget extends StatelessWidget {
-  const TodoCardWidget(
-      {super.key, required this.model, this.index = 0, this.onTap});
-  final TodoModel model;
-  final int index;
-  final VoidCallback? onTap;
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      onTap: onTap,
-      leading: CircleAvatar(
-        radius: 30,
-        child: Text(
-          '${index + 1}',
-          style: const TextStyle(fontWeight: FontWeight.w800),
-        ),
-      ),
-      title: Text(
-        model.todo,
-        style: const TextStyle(height: 1.10, fontWeight: FontWeight.w600),
-      ),
-      subtitle: Text(
-        '${model.isCompleted}',
-        style: const TextStyle(color: Colors.black),
-      ),
     );
   }
 }

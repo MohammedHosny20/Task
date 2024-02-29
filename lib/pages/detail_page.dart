@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task/model/todo_model.dart';
-import 'package:task/pages/home_page.dart';
+import 'package:task/widget/todo_card_widget.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key, required this.model});
